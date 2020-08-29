@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"      
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+        <title>#{titleController.aboutPageTitle}</title> 
+        <style>
+            ul.ex1
+            {
+                list-style-type:none;
+                margin:0;
+                padding:0;
+                overflow:hidden;
+
+                background-color: #bebebe;
+            }
+            li.ex3
+            {
+                float:left;
+            }
+            li.ex4
+            {
+                float:right;
+            }
+            a.ex2:link,a.ex2:visited
+            {
+                display:block;
+                width:120px;
+                font-weight:bold;
+                color:#FFFFFF;
+                background-color:#bebebe;
+                text-align:center;
+                padding:4px;
+                text-decoration:none;
+                text-transform:uppercase;
+            }
+            a.ex2:hover,a.ex2:active
+            {
+                background-color:#1E90FF;
+            }
+            h3.ex5 {text-align:center;}
+            div.botCenter{width:100%; height:35px; line-height:35px; background:#ccc; position:fixed; bottom:0px; left:0px; font-size:14px; color:#000; text-align:center;}
+            #customers
+            {
+                font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+                width:100%;
+                border-collapse:collapse;
+            }
+            #customers td, #customers th 
+            {
+                font-size:1em;
+                border:1px solid #1E90FF;
+                padding:3px 7px 2px 7px;
+            }
+            #customers th 
+            {
+                font-size:1.1em;
+                text-align:left;
+                padding-top:5px;
+                padding-bottom:4px;
+                background-color:#1E90FF;
+                color:#ffffff;
+            }
+            #customers tr.alt td 
+            {
+                color:#000000;
+                background-color:#E1FFFF;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <h:form id="narForm">
+            <ul class="ex1">
+                <li class="ex3">
+                    <h:commandLink class="ex2" value="Index" action="index.xhtml"></h:commandLink>
+                </li>
+                <li class="ex3">
+                    <h:commandLink class="ex2" value="Contact" action="contact.xhtml"></h:commandLink>
+                </li>
+                <li class="ex3"> 
+                    <h:commandLink class="ex2" value="About" action="about.xhtml"></h:commandLink>
+                </li>
+                <li class="ex4">
+                    <h:commandLink class="ex2" value="Log out" action="welcome.xhtml"></h:commandLink>
+                </li>
+            </ul>
+        </h:form>
+        <div class="container">
+            <div class="navbar navbar-inverse">
+                <div class="navbar-brand">
+                    #{titleController.contactPageTitle}
+                </div>
+            </div>
+        </div>
+        <table id="customers">
+            <tr class="alt">
+                <td>Name of Department</td>
+                <td>Suzhou Graduate School of Southeast University</td>
+                
+            </tr>
+            <tr >
+                <td>Address</td>
+                <td>Building 7 and 8, public college, no.377, Linquan street, Dushu Lake Higher Education Innovation Zone, Suzhou City, Jiangsu Province</td>
+                
+            </tr>
+            <tr class="alt">
+                <td>Phone number</td>
+                <td>0512- 62997879</td>
+                
+            </tr>
+            <tr >
+                <td>Email</td>
+                <td>310100728@seu.edu.cn</td>
+                
+            </tr>
+        </table>
+        <div class="botCenter">@2020 Group0x00</div>
+        
+    </h:body>
+</html>

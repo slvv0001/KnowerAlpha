@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+        <title>#{titleController.homePageTitle}</title> 
+     <style>
+            ul.ex1
+            {
+                list-style-type:none;
+                margin:0;
+                padding:0;
+                overflow:hidden;
+                
+                background-color: #bebebe;
+            }
+            li.ex3
+            {
+                float:left;
+            }
+            li.ex4
+            {
+                float:right;
+            }
+            a.ex2:link,a.ex2:visited
+            {
+                display:block;
+                width:120px;
+                font-weight:bold;
+                color:#FFFFFF;
+                background-color:#bebebe;
+                text-align:center;
+                padding:4px;
+                text-decoration:none;
+                text-transform:uppercase;
+            }
+            a.ex2:hover,a.ex2:active
+            {
+                background-color:#1E90FF;
+            }
+           div.botCenter{width:100%; height:35px; line-height:35px; background:#ccc; position:fixed; bottom:0px; left:0px; font-size:14px; color:#000; text-align:center;}
+        </style>
+    </h:head>
+    <h:body>
+        <h:form id="narForm">
+            <ul class="ex1">
+                <li class="ex3">
+                    <h:commandLink class="ex2" value="Index" action="index.xhtml"></h:commandLink>
+                </li>
+                <li class="ex3">
+                   <h:commandLink class="ex2" value="Contact" action="contact.xhtml"></h:commandLink>
+                </li>
+                <li class="ex3"> 
+                    <h:commandLink class="ex2" value="About" action="about.xhtml"></h:commandLink>
+                </li>
+                <li class="ex4">
+                    <h:commandLink class="ex2" value="Log out" action="welcome.xhtml"></h:commandLink>
+                </li>
+            </ul>
+        </h:form>
+        <div class="container">
+            <div class="navbar navbar-inverse">
+                <div class="navbar-brand">
+                    #{titleController.homePageTitle} - Add Question
+                </div>
+            </div>
+            <div>
+                <f:view>
+                    <h:form>
+                        <h1><h:outputText value="Create"/></h1>
+                        <table class="table table-bordered ">
+                            <tr>
+                                <td width ="200">
+                                    <h:outputLabel value="questionTitle" for="questionTitle" />
+                                </td>
+                                <td>
+                                    <h:inputText id="questionTitle" value="#{knower.questionTitle}" title="questionTitle" />
+                                </td>
+
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <h:outputLabel value="questionDetail(URL)" for="questionDetail" />
+                                </td>
+                                <td>
+                                    <h:inputTextarea id="questionDetail" value="#{knower.questionDetail}" title="questionDetail" />
+                                </td>
+
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <h:outputLabel value="type" for="type" />
+                                </td>
+                                <td>
+                                    <h:inputText id="type" value="#{knower.type}" title="type" />
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    <h:outputLabel value="Likes:" for="likes" />
+                                </td>
+                                <td>
+                                    <h:inputText id="likes" value="#{knower.likes}" title="Likes" />
+                                </td>
+
+                            </tr>
+
+                            <tr>
+                                <td height="30">
+
+                                </td>
+                                <td>
+
+                                </td>
+
+                            </tr>
+                        </table>
+
+                        <h:commandButton id="submit" value="Submit" action="#{addKnower.addProperty(knower)}" class="btn btn-primary" />
+                        <h:commandButton id="close" value="Close" action="index.xhtml" class="btn btn-primary" />
+
+                    </h:form>
+
+                </f:view>
+            </div>
+        </div>
+        <div class="botCenter">@2020 Group0x00</div>
+    </h:body>
+</html>
+

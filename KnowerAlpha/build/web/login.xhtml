@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Welcome</title>
+    </head>
+    <body>
+        <center>
+            <div style="border:solid 5px greenyellow;
+                 border-radius:20px;
+                 width:280px;
+                 " >
+                <form method="POST" action="j_security_check">
+                    <h3 align="center" >Please enter your name and password.</h3>   
+                    <table align="center" width="300" >
+                        <tr>
+                            <td>Name:</td>
+                            <td><input type="text" name="j_username" /></td>
+                        </tr>
+                        <tr>
+                            <td>Password:</td>
+                            <td><input type="password" name="j_password" /></td>
+                        </tr>
+                        <tr>
+                            <td align="center" colspan="2"><input type="submit" value="LogIn"/></td>
+                        </tr>
+                    </table>
+
+                </form>
+            </div>
+        </center>
+    </body>
+</html>

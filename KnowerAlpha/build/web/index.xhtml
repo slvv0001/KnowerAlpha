@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"      
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+        <title>#{titleController.homePageTitle}</title> 
+        <style>
+            ul.ex1
+            {
+                list-style-type:none;
+                margin:0;
+                padding:0;
+                overflow:hidden;
+
+                background-color: #bebebe;
+            }
+            li.ex3
+            {
+                float:left;
+            }
+            li.ex4
+            {
+                float:right;
+            }
+            a.ex2:link,a.ex2:visited
+            {
+                display:block;
+                width:120px;
+                font-weight:bold;
+                color:#FFFFFF;
+                background-color:#bebebe;
+                text-align:center;
+                padding:4px;
+                text-decoration:none;
+                text-transform:uppercase;
+            }
+            a.ex2:hover,a.ex2:active
+            {
+                background-color:#1E90FF;
+            }
+            div.botCenter{width:100%; height:35px; line-height:35px; background:#ccc; font-size:14px; color:#000; text-align:center;}
+            div.img {
+                margin: 5px;
+                border: 1px solid #ccc;
+                float: left;
+                width: 180px;
+            }
+
+            div.img:hover {
+                border: 1px solid #777;
+            }
+
+            div.img img {
+                width: 100%;
+                height: auto;
+            }
+
+            div.desc {
+                padding: 15px;
+                text-align: center;
+            }
+            
+        </style>
+    </h:head>
+    <h:body>
+        <h:form id="narForm">
+            <ul class="ex1">
+                <li class="ex3">
+                    <h:commandLink class="ex2" value="Index" action="index.xhtml"></h:commandLink>
+                </li>
+                <li class="ex3">
+                    <h:commandLink class="ex2" value="Contact" action="contact.xhtml"></h:commandLink>
+                </li>
+                <li class="ex3"> 
+                    <h:commandLink class="ex2" value="About" action="about.xhtml"></h:commandLink>
+                </li>
+                <li class="ex4">
+                    <h:commandLink class="ex2" value="Log out" action="welcome.xhtml"></h:commandLink>
+                </li>
+            </ul>
+        </h:form>
+        <div class="container">
+            <div class="navbar navbar-inverse">
+                <div class="navbar-brand">
+                    #{titleController.homePageTitle} - Question  List
+                </div>
+            </div>
+            <h:form id="MyForm">
+                <div>
+                    <div id="left" style="width:50%;float:left;">
+                        <h:inputText value="#{searchKnower.searchByInt}" id="searchById" required="true"   /> 
+                        <h:commandButton id="searchId" value="Search by Id" action="#{searchKnower.searchPropertyById(searchKnower.searchByInt)}" class="btn btn-primary" onclick = "document.getElementById('MyForm:searchByPopularity').value = 0.0;">
+                            <f:param name="propertyID" value="#{status.index + 1}"/>
+                        </h:commandButton>
+                    </div>
+                    <div id="right" style="width:50%;float:left;">
+                        <h:inputText value="#{searchKnower.searchByDouble}" id="searchByPopularity" required="true" /> 
+                        <h:commandButton id="searchPopularity" value="Search by Popularity" action="#{searchKnower.searchPropertyByPopularity(searchKnower.searchByDouble)}" class="btn btn-primary" onclick = "document.getElementById('MyForm:searchById').value = 0;">
+                            <f:param name="propertyID" value="#{status.index + 1}"/>
+                        </h:commandButton>
+                    </div>
+                </div>
+                <table class="table table-bordered table-striped">
+                    <!-- For each property in properties ArrayList... --> 
+                    <tr>
+                        <td> 
+                            <h:outputLabel id="Id" value="Id"  />
+                        </td>
+                        <td> 
+                            <h:outputLabel id="Likes" value="Likes"  />
+                        </td>
+
+                        <td> 
+                            <h:outputLabel id="Question" value="Question"/>
+                        </td>
+
+                    </tr>
+
+                    <ui:repeat id="Myrepeat" value="#{knowerApplication.properties}"  var="property" varStatus="status"> 
+
+                        <tr onclick="document.getElementById('MyForm:principle').value = document.getElementById('MyForm:Myrepeat:#{status.index}:outLikes').textContent"> 
+                            <td>
+                                <h:outputText value="#{knowerApplication.properties.get(status.index).propertyId}" id="propertyID" /> 
+
+                            </td>
+
+                            <td> 
+                                <h:outputText id="outPrice" value="#{knowerApplication.properties.get(status.index).likes}"  />
+                            </td>
+                            <td>
+                                <div class="responsive">
+                                    <div class="img">     
+                                            <h:graphicImage value="#{knowerApplication.properties.get(status.index).question.questionDetail}" width="200" height="200"></h:graphicImage>
+                                        <div class="desc" id="outAddress">#{knowerApplication.properties.get(status.index).question}</div>
+                                    </div>
+                                </div>
+                                    
+                            </td>
+                            <td>
+                                <h:commandLink value="View | " action="detail.xhtml">
+                                    <!-- pass the parameter to next page, the param name is propertyID, and the value is index + 1. 
+                                    You can get the value from next page using the indexController -->
+                                    <f:param name="propertyID" value="#{status.index + 1}"/>
+
+                                </h:commandLink>
+                                <h:commandLink value="Edit | " action="edit.xhtml">
+                                    <!-- pass the parameter to next page, the param name is propertyID, and the value is index + 1. 
+                                    You can get the value from next page using the indexController -->
+                                    <f:param name="propertyID"  value="#{status.index + 1}"></f:param> 
+                                </h:commandLink>
+
+                                <h:commandLink value="Delete" action="#{removeKnower.removeKnower(knowerApplication.properties.get(status.index).propertyId)}">
+                                </h:commandLink>
+
+                                <h:outputText value=" "/>
+                            </td>
+
+                        </tr> 
+
+                    </ui:repeat> 
+
+                </table>
+
+                <div>
+                    <h:commandButton  id="add" value="Add" action="add.xhtml" class="btn btn-primary" />
+                
+                    <h:commandButton id="viewAll" value="View All" action="#{searchKnower.searchAll()}" class="btn btn-primary">
+                        <f:param name="propertyID" value="#{status.index + 1}"/>
+                    </h:commandButton>
+                   
+                </div>
+            </h:form>
+        </div>
+        <div class="botCenter">@2020 Group0x00</div>
+    </h:body>
+</html>
+
