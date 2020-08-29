@@ -76,7 +76,9 @@
                                     <h:outputLabel value="questionTitle" for="questionTitle" />
                                 </td>
                                 <td>
-                                    <h:inputText id="questionTitle" value="#{knower.questionTitle}" title="questionTitle" />
+                                    <h:inputText id="questionTitle" value="#{knower.questionTitle}" title="questionTitle" >
+                                    <f:validateLength minimum = "5" maximum = "8" />
+                                    </h:inputText>
                                 </td>
 
                             </tr>
